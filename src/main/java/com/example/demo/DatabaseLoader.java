@@ -44,7 +44,7 @@ public class DatabaseLoader implements CommandLineRunner {
 		this.repositoryC.save(c1);
 		this.repositoryC.save(c2);
 
-		this.repositoryN.save(new Nota(a1,c2,14));
+		this.repositoryN.save(new Nota(a1,c2,20));
 		this.repositoryN.save(new Nota(a2,c1,17));
 
 	}

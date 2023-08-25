@@ -120,7 +120,8 @@ class Curso extends React.Component {
 				<td>{this.props.curso.nombre}</td>
 				<td>{this.props.curso.profesor}</td>
 				<td>
-					<Link to={"/ver-curso/" + id}>Ver</Link>
+					<Link to={"/ver-curso/" + id}>Ver</Link> | 
+					<Link to={"/ver-notas/" + id}>Notas</Link>
 				</td>
 			</tr>
 		)

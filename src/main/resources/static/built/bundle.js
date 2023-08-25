@@ -40845,6 +40845,8 @@ var HomePage = __webpack_require__(/*! ./pages/home */ "./src/main/js/pages/home
 // const NuevoInstrumentoPage = require('./pages/nuevo-alumno');
 var VerAlumnoPage = __webpack_require__(/*! ./pages/ver-alumno */ "./src/main/js/pages/ver-alumno.js");
 var VerCursoPage = __webpack_require__(/*! ./pages/ver-curso */ "./src/main/js/pages/ver-curso.js");
+var VerNotasPage = __webpack_require__(/*! ./pages/ver-notas */ "./src/main/js/pages/ver-notas.js");
+
 // const EditarInstrumentoPage = require('./pages/editar-alumno');
 // const NuevoIntegrantePage = require('./pages/nuevo-nota');
 
@@ -40857,6 +40859,9 @@ var router = createBrowserRouter([{
 }, {
   path: '/ver-curso/:id',
   element: /*#__PURE__*/React.createElement(VerCursoPage, null)
+}, {
+  path: '/ver-notas/:id',
+  element: /*#__PURE__*/React.createElement(VerNotasPage, null)
 }
 // { path: '/ver-instrumento/:id', element: <VerInstrumentoPage /> },
 // { path: '/nuevo-instrumento', element: <NuevoInstrumentoPage /> },
@@ -41077,7 +41082,9 @@ var Curso = /*#__PURE__*/function (_React$Component5) {
       var id = this.props.curso._links.self.href.split("/").slice(-1);
       return /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("td", null, this.props.curso.nombre), /*#__PURE__*/React.createElement("td", null, this.props.curso.profesor), /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement(Link, {
         to: "/ver-curso/" + id
-      }, "Ver")));
+      }, "Ver"), " |", /*#__PURE__*/React.createElement(Link, {
+        to: "/ver-notas/" + id
+      }, "Notas")));
     }
   }]);
   return Curso;
@@ -41171,6 +41178,68 @@ var VerCursoPage = function VerCursoPage() {
   }, "Volver"));
 };
 module.exports = VerCursoPage;
+
+/***/ }),
+
+/***/ "./src/main/js/pages/ver-notas.js":
+/*!****************************************!*\
+  !*** ./src/main/js/pages/ver-notas.js ***!
+  \****************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
+function _iterableToArrayLimit(arr, i) { var _i = null == arr ? null : "undefined" != typeof Symbol && arr[Symbol.iterator] || arr["@@iterator"]; if (null != _i) { var _s, _e, _x, _r, _arr = [], _n = !0, _d = !1; try { if (_x = (_i = _i.call(arr)).next, 0 === i) { if (Object(_i) !== _i) return; _n = !1; } else for (; !(_n = (_s = _x.call(_i)).done) && (_arr.push(_s.value), _arr.length !== i); _n = !0); } catch (err) { _d = !0, _e = err; } finally { try { if (!_n && null != _i["return"] && (_r = _i["return"](), Object(_r) !== _r)) return; } finally { if (_d) throw _e; } } return _arr; } }
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+var React = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+var _require = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/dist/index.js"),
+  Link = _require.Link,
+  useParams = _require.useParams;
+var _require2 = __webpack_require__(/*! react */ "./node_modules/react/index.js"),
+  useState = _require2.useState,
+  useEffect = _require2.useEffect;
+var client = __webpack_require__(/*! ../client */ "./src/main/js/client.js");
+var VerNotasPage = function VerNotasPage() {
+  var _useParams = useParams(),
+    id = _useParams.id;
+  var _useState = useState({}),
+    _useState2 = _slicedToArray(_useState, 2),
+    curso = _useState2[0],
+    setCurso = _useState2[1];
+  var _useState3 = useState([]),
+    _useState4 = _slicedToArray(_useState3, 2),
+    notas = _useState4[0],
+    setNotas = _useState4[1];
+  useEffect(function () {
+    client({
+      method: 'GET',
+      path: '/api/cursos/' + id
+    }).done(function (response) {
+      return setCurso(response.entity);
+    });
+    client({
+      method: 'GET',
+      path: '/api/cursos/' + id + '/todo'
+    }).done(function (response) {
+      return setNotas(response.entity);
+    });
+  }, []);
+  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("h1", null, "Datos del Curso"), /*#__PURE__*/React.createElement("hr", null), /*#__PURE__*/React.createElement("table", {
+    border: "1"
+  }, /*#__PURE__*/React.createElement("tbody", null, /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("th", null, "Nombre"), /*#__PURE__*/React.createElement("td", null, curso.nombre)), /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("th", null, "Profesor"), /*#__PURE__*/React.createElement("td", null, curso.profesor)))), /*#__PURE__*/React.createElement("hr", null), /*#__PURE__*/React.createElement("h2", null, "Registro de Notas"), /*#__PURE__*/React.createElement("table", {
+    border: "1"
+  }, /*#__PURE__*/React.createElement("thead", null, /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("th", null, "Alumno"), /*#__PURE__*/React.createElement("th", null, "Puntaje"))), /*#__PURE__*/React.createElement("tbody", null, notas.map(function (nota) {
+    return /*#__PURE__*/React.createElement("tr", {
+      key: nota.ID
+    }, /*#__PURE__*/React.createElement("td", null, nota.ALUMNO), /*#__PURE__*/React.createElement("td", null, nota.PUNTAJE));
+  }))), /*#__PURE__*/React.createElement("hr", null), /*#__PURE__*/React.createElement(Link, {
+    to: "/"
+  }, "Volver"));
+};
+module.exports = VerNotasPage;
 
 /***/ }),
 
