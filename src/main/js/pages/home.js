@@ -27,12 +27,10 @@ class HomePage extends React.Component {
 					<div style={{"width": "calc(100% / 2)"}}>
 						<Titulo entidad="Alumnos" emoji="👨🏼‍🎓" />
 						<AlumnoList alumnos={this.state.alumnos} />
-						<Link to="/nuevo-alumno">Nuevo Alumno</Link>
 					</div>
 					<div style={{"width": "calc(100% / 2)"}}>
 						<Titulo entidad="Cursos" emoji="📖" />
 						<CursoList cursos={this.state.cursos} />
-						<Link to="/nuevo-curso">Nuevo Curso</Link>
 					</div>
 				</div>
 
@@ -104,8 +102,7 @@ class Instrumento extends React.Component {
 				<td>{this.props.alumno.carrera}</td>
 				<td>{this.props.alumno.direccion}</td>
 				<td>
-					<Link to={"/ver-alumno/" + id}>Ver</Link> | 
-					<Link to={"/editar-alumno/" + id}>Editar</Link>
+					<Link to={"/ver-alumno/" + id}>Ver</Link>
 				</td>
 			</tr>
 		)

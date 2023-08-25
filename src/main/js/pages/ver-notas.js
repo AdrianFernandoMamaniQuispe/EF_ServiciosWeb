@@ -64,7 +64,7 @@ const VerNotasPage = () => {
             </table>
 
             <hr />
-            {/* <Link to={`/ver-banda/${id}/nuevo-integrante`}>Nuevo Integrante</Link> | */}
+            <Link to={`/ver-notas/${id}/nuevo-nota`}>Agregar Nueva Nota</Link> |
             <Link to="/">Volver</Link>
         </>
     )
