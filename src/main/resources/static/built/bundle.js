@@ -40840,17 +40840,10 @@ var _require = __webpack_require__(/*! react-router-dom */ "./node_modules/react
   createBrowserRouter = _require.createBrowserRouter,
   RouterProvider = _require.RouterProvider;
 var HomePage = __webpack_require__(/*! ./pages/home */ "./src/main/js/pages/home.js");
-// const NuevoMusicoPage = require('./pages/nuevo-curso');
-// const VerInstrumentoPage = require('./pages/ver-curso');
-// const NuevoInstrumentoPage = require('./pages/nuevo-alumno');
 var VerAlumnoPage = __webpack_require__(/*! ./pages/ver-alumno */ "./src/main/js/pages/ver-alumno.js");
 var VerCursoPage = __webpack_require__(/*! ./pages/ver-curso */ "./src/main/js/pages/ver-curso.js");
 var VerNotasPage = __webpack_require__(/*! ./pages/ver-notas */ "./src/main/js/pages/ver-notas.js");
 var NuevaNotaPage = __webpack_require__(/*! ./pages/nueva-nota */ "./src/main/js/pages/nueva-nota.js");
-
-// const EditarInstrumentoPage = require('./pages/editar-alumno');
-// const NuevoIntegrantePage = require('./pages/nuevo-nota');
-
 var router = createBrowserRouter([{
   path: '/',
   element: /*#__PURE__*/React.createElement(HomePage, null)
@@ -40863,14 +40856,7 @@ var router = createBrowserRouter([{
 }, {
   path: '/ver-notas/:id',
   element: /*#__PURE__*/React.createElement(VerNotasPage, null)
-},
-// { path: '/ver-instrumento/:id', element: <VerInstrumentoPage /> },
-// { path: '/nuevo-instrumento', element: <NuevoInstrumentoPage /> },
-// { path: '/ver-musico/:id', element: <VerMusicoPage /> },
-// { path: '/nuevo-musico', element: <NuevoMusicoPage /> },
-// { path: '/editar-instrumento/:id', element: <EditarInstrumentoPage /> },
-// { path: '/ver-banda/:id', element: <VerBandaPage /> },
-{
+}, {
   path: '/ver-notas/:id/nuevo-nota',
   element: /*#__PURE__*/React.createElement(NuevaNotaPage, null)
 }]);
