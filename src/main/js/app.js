@@ -7,6 +7,7 @@ const HomePage = require('./pages/home');
 // const VerInstrumentoPage = require('./pages/ver-curso');
 // const NuevoInstrumentoPage = require('./pages/nuevo-alumno');
 const VerAlumnoPage = require('./pages/ver-alumno');
+const VerCursoPage = require('./pages/ver-curso');
 // const EditarInstrumentoPage = require('./pages/editar-alumno');
 // const NuevoIntegrantePage = require('./pages/nuevo-nota');
 
@@ -14,6 +15,7 @@ const VerAlumnoPage = require('./pages/ver-alumno');
 const router = createBrowserRouter([
 	{ path: '/', element: <HomePage /> },
 	{ path: '/ver-alumno/:id', element: <VerAlumnoPage /> },
+	{ path: '/ver-curso/:id', element: <VerCursoPage /> },
 	// { path: '/ver-instrumento/:id', element: <VerInstrumentoPage /> },
 	// { path: '/nuevo-instrumento', element: <NuevoInstrumentoPage /> },
 	// { path: '/ver-musico/:id', element: <VerMusicoPage /> },
