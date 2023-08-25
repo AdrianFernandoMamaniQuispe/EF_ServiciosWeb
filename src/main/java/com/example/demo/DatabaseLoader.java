@@ -7,48 +7,45 @@ import org.springframework.stereotype.Component;
 @Component
 public class DatabaseLoader implements CommandLineRunner {
 
-	private final InstrumentoRepository repositoryI;
-	private final MusicoRepository repositoryM;
-	private final BandaRepository repositoryB;
-	private final IntegranteRepository repositoryN;
+	private final AlumnoRepository repositoryA;
+	private final CursoRepository repositoryC;
+	private final NotaRepository repositoryN;
 
 	@Autowired
 	public DatabaseLoader(
-		InstrumentoRepository repositoryI,
-		MusicoRepository repositoryM,
-		BandaRepository repositoryB,
-		IntegranteRepository repositoryN
+		AlumnoRepository repositoryA,
+		CursoRepository repositoryC,
+		NotaRepository repositoryN
 		) {
-		this.repositoryI = repositoryI;
-		this.repositoryM = repositoryM;
-		this.repositoryB = repositoryB;
+		this.repositoryA = repositoryA;
+		this.repositoryC = repositoryC;
 		this.repositoryN = repositoryN;
 	}
 
 	@Override
 	public void run(String... strings) throws Exception {
 
-		this.repositoryI.save(new Instrumento("Guitarra", "Cuerda", "de madera, con caja de resonancia, 6 cuerdas templadas"));
-		this.repositoryI.save(new Instrumento("Ukelele","Cuerda","de madera, con caja de resonancia pequeña, 4 cuerdas templadas"));
-		this.repositoryI.save(new Instrumento("Melódica","Viento","teclado pequeño de 2 octavas, sonorizado por soplido"));
-		Instrumento iVoz = new Instrumento("Voz","Viento",".");
-		this.repositoryI.save(iVoz);
-		Instrumento iGuitarraElectrica = new Instrumento("Guitarra Electrica","Electrónico", ".");
-		this.repositoryI.save(iGuitarraElectrica);
-		this.repositoryI.save(new Instrumento("Batería","Percusión","."));
+		// this.repositoryA.save(new Alumno("Adrian Mamani", "Ingenieria Naval", "Pdro. Flores 22 - San Juan de Lurigancho"));
+		// this.repositoryA.save(new Alumno("Alexander Villafuerte","Ingenieria Electronica","Atahualpa 235 - Miraflores"));
+		this.repositoryA.save(new Alumno("Brayan Espinoza","Administracion bancaria","Pasaje Las Cecias, 179 - La Victoria"));
 
-		this.repositoryM.save(new Musico("Daniel F"));
-		Musico mFreddy = new Musico("Freddy");
-		this.repositoryM.save(mFreddy);
-		Musico mBrian = new Musico("Brian");
-		this.repositoryM.save(mBrian);
+		Alumno a1 = new Alumno("Adrian Mamani", "Ingenieria Naval", "Pdro. Flores 22 - San Juan de Lurigancho");
+		Alumno a2 = new Alumno("Alexander Villafuerte","Ingenieria Electronica","Atahualpa 235 - Miraflores");
+		this.repositoryA.save(a1);
+		this.repositoryA.save(a2);
 
-		Banda bQueen = new Banda("Queen");
-		this.repositoryB.save(bQueen);
+		// this.repositoryC.save(new Curso("Algebra Lineal","Alberto Ramirez"));
+		// this.repositoryC.save(new Curso("Redaccion y Comunicacion","Maria Guzman"));
+		this.repositoryC.save(new Curso("Estadistica","Julio Tello"));
 
-		this.repositoryN.save(new Integrante(bQueen, mFreddy, iVoz));
-		this.repositoryN.save(new Integrante(bQueen, mBrian, iGuitarraElectrica));
+		Curso c1 = new Curso("Algebra Lineal","Alberto Ramirez");
+		Curso c2 = new Curso("Redaccion y Comunicacion","Maria Guzman");
 
+		this.repositoryC.save(c1);
+		this.repositoryC.save(c2);
+
+		this.repositoryN.save(new Nota(a1,c2,14));
+		this.repositoryN.save(new Nota(a2,c1,17));
 
 	}
 }

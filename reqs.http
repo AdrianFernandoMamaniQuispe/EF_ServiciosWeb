@@ -1,4 +1,19 @@
 @server = https://solid-space-waddle-767pjvqww4p2p7jv-8080.app.github.dev
+
+###
+GET {{server}}/api/alumnos/3
+
+###
+GET {{server}}/api/cursos
+
+###
+GET {{server}}/api/notas
+
+###
+GET {{server}}/api/cursos/3/todo
+
+######################################
+
 ###
 GET {{server}}/api/instrumentos/2
 ###
